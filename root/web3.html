@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Products | Premium Quality Goods</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36BFFA',
+                        accent: '#FF7D00',
+                        neutral: '#1D2939',
+                        'neutral-light': '#F9FAFB'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .hover-lift {
+                @apply hover:-translate-y-1 hover:shadow-lg transition-all duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-white text-neutral antialiased">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/95 shadow-sm backdrop-blur-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <i class="fa fa-globe text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-neutral">Global<span class="text-primary">Products</span></span>
+                    </a>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-neutral hover:text-primary font-medium transition-custom">Home</a>
+                    <a href="#products" class="text-neutral hover:text-primary font-medium transition-custom">Products</a>
+                    <a href="#about" class="text-neutral hover:text-primary font-medium transition-custom">About</a>
+                    <a href="#testimonials" class="text-neutral hover:text-primary font-medium transition-custom">Testimonials</a>
+                    <a href="#contact" class="text-neutral hover:text-primary font-medium transition-custom">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:flex items-center justify-center h-10 w-10 rounded-full bg-neutral-light hover:bg-gray-200 transition-custom">
+                        <i class="fa fa-search text-neutral"></i>
+                    </button>
+                    <button class="hidden md:flex items-center justify-center h-10 w-10 rounded-full bg-neutral-light hover:bg-gray-200 transition-custom">
+                        <i class="fa fa-shopping-cart text-neutral"></i>
+                    </button>
+                    <select class="hidden md:block bg-transparent text-sm font-medium pr-6 focus:outline-none">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                    
+                    <!-- 移动端菜单按钮 -->
+                    <button id="menu-toggle" class="md:hidden flex items-center justify-center h-10 w-10 rounded-md bg-neutral-light hover:bg-gray-200 transition-custom">
+                        <i class="fa fa-bars text-neutral"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block py-2 text-neutral hover:text-primary font-medium">Home</a>
+                <a href="#products" class="block py-2 text-neutral hover:text-primary font-medium">Products</a>
+                <a href="#about" class="block py-2 text-neutral hover:text-primary font-medium">About</a>
+                <a href="#testimonials" class="block py-2 text-neutral hover:text-primary font-medium">Testimonials</a>
+                <a href="#contact" class="block py-2 text-neutral hover:text-primary font-medium">Contact</a>
+                <div class="flex items-center space-x-4 pt-2">
+                    <button class="flex items-center justify-center h-10 w-10 rounded-full bg-neutral-light hover:bg-gray-200 transition-custom">
+                        <i class="fa fa-search text-neutral"></i>
+                    </button>
+                    <button class="flex items-center justify-center h-10 w-10 rounded-full bg-neutral-light hover:bg-gray-200 transition-custom">
+                        <i class="fa fa-shopping-cart text-neutral"></i>
+                    </button>
+                    <select class="bg-transparent text-sm font-medium pr-6 focus:outline-none">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-primary/5 to-neutral-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="w-full lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-neutral mb-6">
+                        超哥 <span class="text-primary">发大财</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-xl">
+                        Discover our curated collection of high-quality products designed to meet international standards and exceed customer expectations.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#products" class="px-8 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg font-semibold transition-custom shadow-lg hover:shadow-xl hover-lift">
+                            Shop Now
+                        </a>
+                        <a href="#about" class="px-8 py-3 bg-white hover:bg-gray-50 text-primary border border-primary rounded-lg font-semibold transition-custom shadow-md hover:shadow-lg hover-lift">
+                            Learn More
+                        </a>
+                    </div>
+                    <div class="flex items-center mt-10 space-x-6">
+                        <div class="flex -space-x-2">
+                            <img src="https://picsum.photos/40/40?random=1" alt="Customer" class="h-10 w-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=2" alt="Customer" class="h-10 w-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=3" alt="Customer" class="h-10 w-10 rounded-full border-2 border-white">
+                            <div class="h-10 w-10 rounded-full border-2 border-white bg-primary/10 flex items-center justify-center text-primary text-xs font-medium">
+                                500+
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-center">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <span class="ml-2 text-sm font-medium">4.9/5</span>
+                            </div>
+                            <p class="text-sm text-gray-500">From over 1,200 reviews</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://picsum.photos/800/600?random=10" alt="Featured Product" class="w-full h-auto object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end">
+                            <div class="p-6 md:p-8">
+                                <span class="inline-block px-3 py-1 bg-accent text-white text-sm font-semibold rounded-full mb-3">New Arrival</span>
+                                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Premium Smart Watch Series 5</h3>
+                                <p class="text-white/90 mb-4 max-w-md">Advanced health monitoring with sleek design</p>
+                                <a href="#" class="inline-flex items-center px-4 py-2 bg-white text-primary font-medium rounded-lg hover:bg-gray-100 transition-custom">
+                                    View Details <i class="fa fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl hidden md:block">
+                        <div class="flex items-center space-x-3">
+                            <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fa fa-truck text-green-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral">Free Shipping</p>
+                                <p class="text-xs text-gray-500">On orders over $99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -right-6 bg-white p-4 rounded-xl shadow-xl hidden md:block">
+                        <div class="flex items-center space-x-3">
+                            <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fa fa-shield text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-neutral">Secure Payment</p>
+                                <p class="text-xs text-gray-500">100% secure checkout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特色区域 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-neutral-light rounded-xl p-6 hover-lift">
+                    <div class="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <i class="fa fa-globe text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">International Shipping</h3>
+                    <p class="text-gray-600">We ship to over 150 countries worldwide with reliable carriers.</p>
+                </div>
+                <div class="bg-neutral-light rounded-xl p-6 hover-lift">
+                    <div class="h-14 w-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                        <i class="fa fa-leaf text-green-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Eco-Friendly</h3>
+                    <p class="text-gray-600">Sustainable products and packaging designed for a greener planet.</p>
+                </div>
+                <div class="bg-neutral-light rounded-xl p-6 hover-lift">
+                    <div class="h-14 w-14 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                        <i class="fa fa-certificate text-purple-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Quality Assurance</h3>
+                    <p class="text-gray-600">Every product undergoes rigorous testing before reaching you.</p>
+                </div>
+                <div class="bg-neutral-light rounded-xl p-6 hover-lift">
+                    <div class="h-14 w-14 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+                        <i class="fa fa-headphones text-amber-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Our dedicated support team is always available to assist you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品分类 -->
+    <section class="py-16 bg-neutral-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Browse Categories</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our diverse range of products carefully curated to meet your needs</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                <a href="#" class="category-card group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="https://picsum.photos/300/300?random=20" alt="Electronics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-semibold text-neutral">Electronics</h3>
+                            <p class="text-sm text-gray-500">24 Products</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="category-card group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="https://picsum.photos/300/300?random=21" alt="Fashion" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-semibold text-neutral">Fashion</h3>
+                            <p class="text-sm text-gray-500">36 Products</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="category-card group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="https://picsum.photos/300/300?random=22" alt="Home Decor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-semibold text-neutral">Home Decor</h3>
+                            <p class="text-sm text-gray-500">18 Products</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="category-card group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="https://picsum.photos/300/300?random=23" alt="Beauty" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-semibold text-neutral">Beauty</h3>
+                            <p class="text-sm text-gray-500">29 Products</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="category-card group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="https://picsum.photos/300/300?random=24" alt="Sports" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-semibold text-neutral">Sports</h3>
+                            <p class="text-sm text-gray-500">22 Products</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="category-card group">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-custom">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="https://picsum.photos/300/300?random=25" alt="Toys" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="font-semibold text-neutral">Toys</h3>
+                            <p class="text-sm text-gray-500">15 Products</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Products</h2>
+                    <p class="text-gray-600 max-w-2xl">Discover our most popular products loved by customers worldwide</p>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <div class="flex space-x-2">
+                        <button id="prev-products" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-custom">
+                            <i class="fa fa-chevron-left text-neutral"></i>
+                        </button>
+                        <button id="next-products" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition-custom">
+                            <i class="fa fa-chevron-right text-neutral"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- 产品卡片 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl group hover-lift">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400?random=30" alt="Wireless Headphones" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="inline-block px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full">Hot</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-custom shadow-sm">
+                                <i class="fa fa-heart-o text-neutral"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star-half-o text-yellow-400 text-xs"></i>
+                            <span class="ml-1 text-xs text-gray-500">4.8 (120)</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-1">Wireless Noise Cancelling Headphones</h3>
+                        <p class="text-gray-500 text-sm mb-3">Premium sound quality with active noise cancellation</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-primary font-bold text-xl">$199.99</span>
+                                <span class="text-gray-400 line-through text-sm ml-2">$249.99</span>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-custom text-primary">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 产品卡片 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl group hover-lift">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400?random=31" alt="Smart Watch" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="inline-block px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full">New</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-custom shadow-sm">
+                                <i class="fa fa-heart-o text-neutral"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star-o text-yellow-400 text-xs"></i>
+                            <span class="ml-1 text-xs text-gray-500">4.0 (86)</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-1">Smart Watch Pro Series</h3>
+                        <p class="text-gray-500 text-sm mb-3">Advanced health monitoring with sleek design</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-primary font-bold text-xl">$149.99</span>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-custom text-primary">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 产品卡片 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl group hover-lift">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400?random=32" alt="Bluetooth Speaker" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4">
+                            <button class="w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-custom shadow-sm">
+                                <i class="fa fa-heart-o text-neutral"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <span class="ml-1 text-xs text-gray-500">5.0 (42)</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-1">Portable Bluetooth Speaker</h3>
+                        <p class="text-gray-500 text-sm mb-3">360° sound with IPX7 waterproof rating</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-primary font-bold text-xl">$89.99</span>
+                                <span class="text-gray-400 line-through text-sm ml-2">$109.99</span>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-custom text-primary">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 产品卡片 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl group hover-lift">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400?random=33" alt="Digital Camera" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4">
+                            <span class="inline-block px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full">Sale</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button class="w-8 h-8 rounded-full bg-white/80 hover:bg-white flex items-center justify-center transition-custom shadow-sm">
+                                <i class="fa fa-heart-o text-neutral"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star text-yellow-400 text-xs"></i>
+                            <i class="fa fa-star-half-o text-yellow-400 text-xs"></i>
+                            <span class="ml-1 text-xs text-gray-500">4.7 (95)</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-1">Digital Camera 4K Ultra HD</h3>
+                        <p class="text-gray-500 text-sm mb-3">Professional photography with advanced features</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-primary font-bold text-xl">$349.99</span>
+                                <span class="text-gray-400 line-through text-sm ml-2">$429.99</span>
+                            </div>
+                            <button class="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-custom text-primary">
+                                <i class="fa fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 bg-white border border-primary text-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-custom shadow-sm hover:shadow-md">
+                    View All Products <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 促销横幅 -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-8 md:mb-0 max-w-xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Summer Sale Event</h2>
+                    <p class="text-white/90 text-lg mb-6">Up to 50% off on selected products. Limited time offer!</p>
+                    <div class="flex space-x-4 mb-8">
+                        <div class="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center">
+                            <span class="text-2xl font-bold" id="days">12</span>
+                            <span class="text-xs">Days</span>
+                        </div>
+                        <div class="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center">
+                            <span class="text-2xl font-bold" id="hours">22</span>
+                            <span class="text-xs">Hours</span>
+                        </div>
+                        <div class="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center">
+                            <span class="text-2xl font-bold" id="minutes">45</span>
+                            <span class="text-xs">Mins</span>
+                        </div>
+                        <div class="w-16 h-16 rounded-lg bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center">
+                            <span class="text-2xl font-bold" id="seconds">33</span>
+                            <span class="text-xs">Secs</span>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-custom shadow-lg">
+                        Shop Now
+                    </a>
+                </div>
+                <div class="hidden md:block relative w-1/2">
+                    <img src="https://picsum.photos/600/400?random=40" alt="Summer Sale" class="w-full h-auto rounded-xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-white text-primary font-bold text-4xl px-6 py-3 rounded-lg shadow-xl hidden lg:block">
+                        -50%
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://picsum.photos/800/600?random=50" alt="Our Company" class="w-full h-auto">
+                    </div>
+                    <div class="absolute top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full -z-10 hidden lg:block"></div>
+                    <div class="absolute -bottom-10 -left-10 w-60 h-60 bg-primary/5 rounded-full -z-10 hidden lg:block"></div>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="text-primary font-semibold">ABOUT US</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Global Products Since 2010</h2>
+                    <p class="text-gray-600 mb-6">
+                        We are a leading global provider of high-quality consumer products, committed to delivering exceptional value and customer satisfaction.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        Our mission is to bring innovative and reliable products to customers around the world while maintaining the highest standards of quality and sustainability.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-check text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Premium Quality</h3>
+                                <p class="text-gray-600 text-sm">We ensure all products meet strict quality standards</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-globe text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Global Reach</h3>
+                                <p class="text-gray-600 text-sm">Shipping to over 150 countries worldwide</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-shield text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Secure Shopping</h3>
+                                <p class="text-gray-600 text-sm">100% secure payment processing</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-refresh text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-2">Easy Returns</h3>
+                                <p class="text-gray-600 text-sm">30-day return policy on all products</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-custom shadow-lg hover:shadow-xl">
+                        Learn More About Us <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section id="testimonials" class="py-16 bg-neutral-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-primary font-semibold">TESTIMONIALS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Read honest reviews from our valued customers from around the world</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 评价卡片 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-custom">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/60/60?random=60" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-500">United States</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "I'm extremely satisfied with the wireless headphones I purchased. The sound quality is amazing, and the battery life exceeds my expectations. Shipping was fast even to my remote location."
+                    </p>
+                </div>
+                
+                <!-- 评价卡片 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-custom">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/60/60?random=61" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Marcus Müller</h4>
+                            <p class="text-sm text-gray-500">Germany</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star-half-o text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "The smartwatch I ordered arrived in perfect condition and works flawlessly. The interface is intuitive, and the health tracking features are very accurate. Great customer service too!"
+                    </p>
+                </div>
+                
+                <!-- 评价卡片 3 -->
+                <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-custom">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/60/60?random=62" alt="Customer" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sophie Dubois</h4>
+                            <p class="text-sm text-gray-500">France</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "J'ai commandé une montre connectée et je suis ravi du produit. La qualité est exceptionnelle et le service client est très réactif. Je recommande vivement cette boutique!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="w-full lg:w-1/2">
+                    <span class="text-primary font-semibold">CONTACT US</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Get In Touch</h2>
+                    <p class="text-gray-600 mb-8">
+                        Have questions or need assistance? Our dedicated support team is ready to help you with any inquiries.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-map-marker text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Address</h3>
+                                <p class="text-gray-600 text-sm">1234 Market Street, Suite 500<br>San Francisco, CA 94103</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Email</h3>
+                                <p class="text-gray-600 text-sm">support@globalproducts.com<br>info@globalproducts.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Phone</h3>
+                                <p class="text-gray-600 text-sm">+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                                <i class="fa fa-clock-o text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold mb-1">Hours</h3>
+                                <p class="text-gray-600 text-sm">Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 4PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white hover:bg-blue-700 transition-custom">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center text-white hover:bg-sky-600 transition-custom">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white hover:opacity-90 transition-custom">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-700 transition-custom">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-neutral-light rounded-xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                        <form>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="Your name">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="Your email">
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="Subject">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="Your message"></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-custom shadow-md hover:shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="py-16 bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+                <p class="text-gray-600 mb-8">Stay updated with our latest products, promotions and exclusive offers</p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                    <input type="email" placeholder="Enter your email address" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-custom">
+                    <button type="submit" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-custom shadow-md hover:shadow-lg whitespace-nowrap">
+                        Subscribe Now
+                    </button>
+                </form>
+                <p class="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fa fa-globe text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">Global<span class="text-primary">Products</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Bringing premium products to customers worldwide since 2010. Quality, reliability and customer satisfaction are our top priorities.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-custom">Home</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-custom">Products</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-custom">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-custom">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-custom">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Customer Service</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Track Order</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact Information</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">1234 Market Street, Suite 500<br>San Francisco, CA 94103</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-primary mr-3"></i>
+                            <a href="mailto:support@globalproducts.com" class="text-gray-400 hover:text-white transition-custom">support@globalproducts.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-primary mr-3"></i>
+                            <a href="tel:+15551234567" class="text-gray-400 hover:text-white transition-custom">+1 (555) 123-4567</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-clock-o text-primary mr-3"></i>
+                            <span class="text-gray-400">Monday - Friday: 9AM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                        &copy; 2025 Global Products. All rights reserved.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://picsum.photos/40/25?random=70" alt="Visa" class="h-6 w-auto">
+                        <img src="https://picsum.photos/40/25?random=71" alt="Mastercard" class="h-6 w-auto">
+                        <img src="https://picsum.photos/40/25?random=72" alt="PayPal" class="h-6 w-auto">
+                        <img src="https://picsum.photos/40/25?random=73" alt="Apple Pay" class="h-6 w-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('bg-white/95');
+                navbar.classList.add('bg-white');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('bg-white/95');
+                navbar.classList.remove('bg-white');
+            }
+        });
+        
+        // 移动端菜单切换
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // 倒计时功能
+        function updateCountdown() {
+            // 设置目标日期（示例：未来7天）
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
+            
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        // 初始化倒计时并每秒更新
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // 产品轮播控制（示例功能）
+        document.getElementById('prev-products').addEventListener('click', function() {
+            // 这里可以实现产品轮播的上一页功能
+            console.log('Previous products');
+        });
+        
+        document.getElementById('next-products').addEventListener('click', function() {
+            // 这里可以实现产品轮播的下一页功能
+            console.log('Next products');
+        });
+    </script>
+</body>
+</html>    
